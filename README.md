@@ -1,12 +1,7 @@
-<p align="center">
-  Basic project with: 
+## Basic project with
+  ```bash
   - Backend with Nodejs and Nestjs framework;
-  - Frontend with Angular and Akita framework.
-</p>
-
-## Description
-
-[Basic project "Nodejs/Nestjs-Ionic/Angular/Akita" ](https://github.com/FrankRex69/NodeNestjs-AngularAkita) framework TypeScript starter repository.
+```
 
 ## Installation backend/frontend
 
@@ -30,9 +25,6 @@ $ docker compose --env-file ./backend/.env up (before you rename file backend/.e
 # WATCH MODE (in BACKEND directory)
 # developer - backend
 $ nest start
-
-# developer - frontend
-$ npm run dev:front
 ```
 ```bash
 # url for use App
