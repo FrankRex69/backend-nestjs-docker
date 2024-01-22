@@ -26,7 +26,7 @@ console.log('DB_HOST: ' + _.DB_HOST);
     UsersModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: _.DB_HOST,
+      host: 'postgresbase',
       port: Number.parseInt(_.DB_PORT),
       database: _.DB_DB,
       username: _.DB_USER,
