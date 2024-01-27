@@ -41,11 +41,7 @@ async function bootstrap() {
   //----------------------------------------------------------------------------------------------------------
     
   const port = 7000;
-  app.listen(port, function () {
-
-    console.log("testasd");
-
-      
+  app.listen(port, function () {    
     console.log(`http://localhost:${port}/api/swagger`);
   });
 
