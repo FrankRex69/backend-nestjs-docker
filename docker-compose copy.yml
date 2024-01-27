@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  postgresbase:
+  postgres_base:
     image: postgis/postgis:13-3.1-alpine
     container_name: postgres_base_container
     restart: unless-stopped
@@ -24,23 +24,21 @@ services:
     # name image
     image: '${IMAGE}'
     # setup for build image (path for dockerfile e target in docker file [not mandatory])
-    networks:
-      - proxy
     build:
       # path Dockerfile
       context: ./
       # Target use in dockerfile with multiple setup (example: local, prod)
       target: '${TARGET}'
-    # entrypoint: bash -c '${COMMAND}'
+    entrypoint: bash -c '${COMMAND}'
     ports:
       - '7000:7000'
     depends_on:
-      - postgresbase
+      - postgres_base
     # One of the main advantages of using Docker volumes
     # is the possibility of changing the content/configuration
     # of a container without the need to recreate it.
     volumes:
-     - ./backend/src:/app/backend/src
+     - './:/app'
 
   pgadmin4_base:
     container_name: pgadmin4_base_container
@@ -54,7 +52,7 @@ services:
     ports:
       - '5050:80'
     depends_on:
-      - postgresbase
+      - postgres_base
 
 networks:
   proxy:

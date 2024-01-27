@@ -6,8 +6,8 @@
 ## Installation backend/frontend
 
 ```bash
-# Install package's backend and frontend (in root directory)
-$ npm run setup
+# Install package's backend (in backend directory)
+$ npm install
 ```
 
 ## Docker section
@@ -17,14 +17,14 @@ $ docker stop $(docker ps -a -q)
 $ docker rm $(docker ps -a -q)
 
 # Docker (in root)
-$ docker network create proxy
+$ docker network create proxy (docker network ls, docker network prune)
 $ docker compose --env-file ./backend/.env up (before you rename file backend/.env.example like backend/.env)
 ```
 ## Running the app
 ```bash
 # WATCH MODE (in BACKEND directory)
 # developer - backend
-$ nest start
+$ npm run start:dev
 ```
 ```bash
 # url for use App
@@ -39,7 +39,7 @@ user: admin@admin.com
 pass: root
 for connection in pgadmin
 - create a new server
-- "hostname": "postgres_base"
+- "hostname": "postgresbase"
 - "port": 5432
 - "Maintenance": "postgres"
 - "username": "postgres"
