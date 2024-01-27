@@ -19,6 +19,8 @@ $ docker rm $(docker ps -a -q)
 # Docker (in root)
 $ docker network create proxy (docker network ls, docker network prune)
 $ docker compose --env-file ./backend/.env up (before you rename file backend/.env.example like backend/.env)
+image=backend-development:backend-development target=development docker compose --env-file ./backend/.env up
+
 ```
 ## Running the app
 ```bash
