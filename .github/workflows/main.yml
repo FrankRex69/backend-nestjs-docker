@@ -28,5 +28,5 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.SSH_HOST_PROD}} '          
           docker login -u "francesco.re69@gmail.com" -p "Lillone19" docker.io
-          image=backend-development:backend-development target=development docker compose --env-file ./backend/.env_deploy up
+          image=backend-development:backend-development target=development docker compose --env-file ./backend/.env up
           '
