@@ -5,19 +5,7 @@ on:
     types: [ closed ]
 
 jobs:          
-  Build_image_and_publish:
-    runs-on: ubuntu-latest 
-    name: Build and Push image
-    steps:
-      - uses: actions/checkout@v3 
-      - name: Build & Push image
-        run: |
-          docker login -u "francesco.re69@gmail.com" -p "Lillone19" docker.io
-          docker build --target development -t 3481974/name-development:tag-development .
-          docker push docker.io/3481974/name-development:tag-development
-          
   Deploy:
-    needs: Build_image_and_publish
     name: Deploy to main
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest    
