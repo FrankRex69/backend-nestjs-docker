@@ -8,10 +8,10 @@ services:
     networks:
       - proxy
     environment:
-      - POSTGRES_HOST=${PG_HOST}
-      - POSTGRES_DB=${PG_DB}
-      - POSTGRES_USER=${PG_USER}
-      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_HOST="postgresbase"
+      - POSTGRES_DB="postgres"
+      - POSTGRES_USER="postgres"
+      - POSTGRES_PASSWORD="developmentChatOperativa"
       - TZ=Europe/Rome
       - PGTZ=Europe/Rome
     ports:
@@ -22,7 +22,7 @@ services:
 
   app:
     # name image
-    image: '${IMAGE}'
+    image: "backend-development:backend-development"
     # setup for build image (path for dockerfile e target in docker file [not mandatory])
     networks:
       - proxy
@@ -30,7 +30,7 @@ services:
       # path Dockerfile
       context: ./
       # Target use in dockerfile with multiple setup (example: local, prod)
-      target: '${TARGET}'
+      target: "development"
     # entrypoint: bash -c '${COMMAND}'
     ports:
       - '7000:7000'
