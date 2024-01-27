@@ -1,5 +1,5 @@
 # Use the Node.js image for the local
-FROM node:18.19 AS local
+FROM node:20 AS local
 
 # Set the working directory. If it doesn't exists, it'll be created
 WORKDIR /app/backend
