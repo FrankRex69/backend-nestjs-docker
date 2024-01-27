@@ -31,7 +31,7 @@ services:
       context: ./
       # Target use in dockerfile with multiple setup (example: local, prod)
       target: '${TARGET}'
-    entrypoint: bash -c '${COMMAND}'
+    # entrypoint: bash -c '${COMMAND}'
     ports:
       - '7000:7000'
     depends_on:
