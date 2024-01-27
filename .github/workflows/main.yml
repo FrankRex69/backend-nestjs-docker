@@ -6,7 +6,6 @@ on:
 
 jobs:          
   Build_image_and_publish:
-    needs: Stop_and_remove_container
     runs-on: ubuntu-latest 
     name: Build and Push image
     steps:
