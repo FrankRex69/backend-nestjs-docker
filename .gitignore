@@ -2,3 +2,6 @@ docker_volumes
 .env.docker
 frontend/package-lock.json
 node_modules
+backend/.env
+backend/dist
+backend/node_modules
