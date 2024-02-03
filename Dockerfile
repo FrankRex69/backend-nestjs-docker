@@ -23,7 +23,7 @@ ENTRYPOINT npm run start:dev
 # ------------------------------------------------------------------
 
 # Use the Node.js image for the local
-FROM node:18.19 AS development
+FROM node:20 AS development
 
 # Set the working directory. If it doesn't exists, it'll be created
 WORKDIR /app/backend
