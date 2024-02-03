@@ -24,7 +24,7 @@ export class ListItemService {
   }
 
   findOne(id: number): Promise<ListItem> {
-    return this.repository.findOne(id);
+    return this.repository.findOne({where : {id: id}});
   }
 
   async create(dto: CreateListItemDto): Promise<CreateListItemDto> {
@@ -32,7 +32,7 @@ export class ListItemService {
   }
 
   async update(id: number, dto: UpdateListItemDto): Promise<UpdateListItemDto> {
-    const listItem = await this.repository.findOne(id);
+    const listItem = await this.repository.findOne({where : {id: id}});
     if (!listItem) {
       throw new NotFoundException(`ListItem #${id} not found`);
     }
@@ -40,7 +40,7 @@ export class ListItemService {
   }
 
   async remove(id: number): Promise<ListItem> {
-    const listItem = await this.repository.findOne(id);
+    const listItem = await this.repository.findOne({where : {id: id}});
     if (!listItem) {
       throw new NotFoundException(`Commission #${id} not found`);
     }
