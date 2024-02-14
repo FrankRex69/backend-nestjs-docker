@@ -2,7 +2,7 @@ docker_volumes
 node_modules
 
 backend/.env
-backend/dist
+# backend/dist
 backend/node_modules
 
 
