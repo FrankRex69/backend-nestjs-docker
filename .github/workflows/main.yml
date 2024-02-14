@@ -19,3 +19,14 @@ jobs:
           # docker stop nodejsserver
           # docker rm nodejsserver
           '
+  Build_image_and_publish:
+    needs: Stop_and_remove_container
+    runs-on: ubuntu-latest 
+    name: Build and Push image
+    steps:
+      - uses: actions/checkout@v3 
+      - name: Build & Push image
+        run: |
+          docker login -u "francesco.re69@gmail.com" -p "Lillone19" docker.io
+          docker build --target development -t 3481974/backend-development-server:backend-development-server .
+          docker push docker.io/3481974/backend-development-server:backend-development-server
