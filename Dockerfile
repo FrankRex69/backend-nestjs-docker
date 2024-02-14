@@ -16,7 +16,7 @@ RUN npm install
 COPY . /app
 
 # Command
-ENTRYPOINT npm run start:dev
+ENTRYPOINT npm run start:dev-local
 
 # ------------------------------------------------------------------
 # ------------------------------------------------------------------

@@ -41,6 +41,7 @@ services:
     # of a container without the need to recreate it.
     volumes:
      - ./backend/src:/app/backend/src
+     - ./backend/dist:/app/backend/dist
 
   pgadmin4_base:
     container_name: pgadmin4_base_container
