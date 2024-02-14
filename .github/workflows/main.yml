@@ -17,6 +17,7 @@ jobs:
       - run: npm run build
       
   Stop_and_remove_container:
+    needs: Build
     name: Stop and remove container
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest    
