@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
- app:
+  app:
     # name image
     image: '${IMAGE}'
     # setup for build image (path for dockerfile e target in docker file [not mandatory])
@@ -15,11 +15,13 @@ services:
     # entrypoint: bash -c '${COMMAND}'
     ports:
       - '7000:7000'
+    # depends_on:
+    #   - postgresbase
     # One of the main advantages of using Docker volumes
     # is the possibility of changing the content/configuration
     # of a container without the need to recreate it.
     # volumes:
-    #  - ./backend/src:/app/backend/src
+    #  - ./backend/src:/app/backend/src  
 
 networks:
   proxy:
