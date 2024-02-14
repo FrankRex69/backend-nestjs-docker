@@ -32,12 +32,17 @@ WORKDIR /app/backend
 # inside our image in the folder `/app`
 COPY ./backend/package.json /app/backend/package.json
 
+# Copy the file `.env` from current folder
+# inside our image in the folder `/app`
+COPY ./backend/.env /app/backend/.env
+
 # Install the dependencies
-RUN npm install
+RUN npm install --omit=dev
 
 # Copy all files from current folder
 # inside our image in the folder `/app`
-COPY . /app
+# COPY . /app
+COPY ./backend/dist /app/backend/dist
 
 # Command
-ENTRYPOINT npm run build && npm run start
+ENTRYPOINT npm run start:prod
