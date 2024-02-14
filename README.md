@@ -19,7 +19,7 @@ $ docker rm $(docker ps -a -q)
 # DOCKER DEPLOY(in root)
 $ docker network create proxy (docker network ls, docker network prune)
 ## Docker for developer mode in local
-$ IMAGE=backend-local TARGET=local docker compose --env-file ./backend/.env up
+$ IMAGE=backend-development-local:backend-development-local TARGET=local docker compose --env-file ./backend/.env up
 ## Docker for developer mode in server
 $ IMAGE=backend-development TARGET=development docker compose --env-file ./backend/.env up
 ### DOCKER PUSH IN DOCKER HUB

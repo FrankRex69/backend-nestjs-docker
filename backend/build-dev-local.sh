@@ -1,0 +1,1 @@
+IMAGE=backend-development-local:backend-development-local TARGET=local docker compose -f ../docker-compose-dev-local.yml --env-file .env up
