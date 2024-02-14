@@ -34,7 +34,7 @@ COPY ./backend/package.json /app/backend/package.json
 
 # Copy the file `.env` from current folder
 # inside our image in the folder `/app`
-COPY ./backend/.env /app/backend/.env
+# COPY ./backend/.env /app/backend/.env
 
 # Install the dependencies
 RUN npm install --omit=dev
