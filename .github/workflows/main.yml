@@ -28,5 +28,13 @@ jobs:
       - name: Build & Push image
         run: |
           docker login -u "francesco.re69@gmail.com" -p "Lillone19" docker.io
-          docker build --target development -t 3481974/backend-development-server:backend-development-server .
+          docker build --target development -t 3481974/backend-development-server:backend-development-server \
+          --build-arg POSTGRES_HOST=${{secrets.PG_HOST}} \
+          POSTGRES_DB=${{secrets.PG_DB}} \
+          POSTGRES_USER=${{secrets.PG_USER}} \
+          POSTGRES_PASSWORD=${{secrets.PG_PASSWORD}} \
+          POSTGRES_SCHEMA=${{secrets.PG_SCHEMA}} \
+          POSTGRES_PORT=${{secrets.PG_PORT}} \
+          TZ=Europe/Rome \
+          PGTZ=Europe/Rome .
           docker push docker.io/3481974/backend-development-server:backend-development-server
