@@ -45,4 +45,4 @@ RUN npm install --omit=dev
 COPY ./backend/dist /app/backend/dist
 
 # Command
-ENTRYPOINT npm run start:prod
+ENTRYPOINT set NODE_ENV=production && npm run start:prod
