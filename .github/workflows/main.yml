@@ -1,1 +1,21 @@
 name: Deploy
+on:
+  pull_request:
+    branches: [ main ]
+    types: [ closed ]
+jobs:
+  Stop_and_remove_container:
+    name: Stop and remove container
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Stop & Remove
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.SSH_HOST_PROD}} '
+          touch pincopallo2.txt
+          echo "Hello World 76543"
+          # docker stop nodejsserver
+          # docker rm nodejsserver
+          '
