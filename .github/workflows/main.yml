@@ -12,5 +12,5 @@ jobs:
       - name: Build & Push image
         run: |
           docker login -u "francesco.re69@gmail.com" -p "Lillone19" docker.io
-          docker build --target development -t 3481974/backend-development-server:backend-development-server
+          docker build --target development -t 3481974/backend-development-server:backend-development-server .
           docker push docker.io/3481974/backend-development-server:backend-development-server
