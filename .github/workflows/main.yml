@@ -14,3 +14,38 @@ jobs:
           docker login -u "francesco.re69@gmail.com" -p "Lillone19" docker.io
           docker build --target development -t 3481974/backend-development-server:backend-development-server .
           docker push docker.io/3481974/backend-development-server:backend-development-server
+  Container_db_postgresql:
+    name: Build container db Postgresql
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v3 
+      - name: Build container db Postgresql
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.SSH_HOST_PROD}} '
+          docker network create proxy
+          docker run --name postgresbase --network proxy \
+          -e POSTGRES_HOST=postgresbase \
+          -e POSTGRES_DB=postgres \
+          -e POSTGRES_USER=postgres \
+          -e POSTGRES_PASSWORD=developmentChatOperativa \
+          -e TZ=Europe/Rome \
+          -e PGTZ=Europe/Rome \
+          -p 5432:5432 \
+          -v /var/lib/docker/volumes/postgresql_data:/var/lib/postgresql_data \
+          -v /var/lib/docker/init_docker/init.sql:/docker-entrypoint-initdb.d/init.sql \
+          -d postgis/postgis:13-3.1-alpine
+          docker run --name pgadmin --network proxy -p 5050:80 -e "PGADMIN_DEFAULT_EMAIL=admin@admin.com" -e "PGADMIN_DEFAULT_PASSWORD=root" -d dpage/pgadmin4
+          docker run --name backend-development --network proxy \
+          -e PG_HOST=postgresbase \
+          -e PG_DB=postgres \
+          -e PG_USER=postgres \
+          -e PG_PASSWORD=developmentChatOperativa \
+          -e PG_SCHEMA=base \
+          -e PG_PORT=5432 \
+          -e TZ=Europe/Rome \
+          -e PGTZ=Europe/Rome \
+          -p 7000:7000 \
+          -d 3481974/backend-development-server:backend-development-server
+          '
