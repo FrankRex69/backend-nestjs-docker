@@ -25,9 +25,6 @@ ENTRYPOINT NODE_ENV=production npm run start:dev-local
 # Use the Node.js image for the local
 FROM node:20 AS development
 
-# Env
-ENV env_POSTGRES_HOST=${POSTGRES_HOST}
-
 # Set the working directory. If it doesn't exists, it'll be created
 WORKDIR /app/backend
 
@@ -48,4 +45,4 @@ RUN npm install --omit=dev
 COPY ./backend/dist /app/backend/dist
 
 # Command
-ENTRYPOINT set NODE_ENV=production && npm run start:prod
+ENTRYPOINT npm run start:prod
