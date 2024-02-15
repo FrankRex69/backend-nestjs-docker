@@ -8,35 +8,17 @@ import * as dotenv from 'dotenv';
 import { UsersModule } from './modu/users/users.module';
 dotenv.config();
 
-let _ = {
-  DB_HOST: "yyyyy",
+
+console.log(process.env.DB_HOST);
+
+const _ = {
+  DB_HOST: process.env.PG_HOST,
   DB_PORT: process.env.PG_PORT,
   DB_DB: process.env.PG_DB,
   DB_SCHEMA: process.env.PG_SCHEMA,
   DB_USER: process.env.PG_USER,
   DB_PASSWORD: process.env.PG_PASSWORD,
 };
-console.log(process.env.NODE_ENV);
-
-if(process.env.NODE_ENV === 'production'){
-  _ = {
-    DB_HOST: '${{secrets.SSH_HOST_PROD}}',
-    DB_PORT: process.env.PG_PORT,
-    DB_DB: process.env.PG_DB,
-    DB_SCHEMA: process.env.PG_SCHEMA,
-    DB_USER: process.env.PG_USER,
-    DB_PASSWORD: process.env.PG_PASSWORD,
-  };  
-}else{
-  _ = {
-    DB_HOST: process.env.PG_HOST,
-    DB_PORT: process.env.PG_PORT,
-    DB_DB: process.env.PG_DB,
-    DB_SCHEMA: process.env.PG_SCHEMA,
-    DB_USER: process.env.PG_USER,
-    DB_PASSWORD: process.env.PG_PASSWORD,
-  };
-}
 
 console.log('DB_HOST: ' + _.DB_HOST);
 
