@@ -27,10 +27,10 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.SSH_HOST_PROD}} '
           docker network create proxy
           docker run --name postgresbase --network proxy \
-          -e POSTGRES_HOST=postgresbase \
-          -e POSTGRES_DB=postgres \
-          -e POSTGRES_USER=postgres \
-          -e POSTGRES_PASSWORD=developmentChatOperativa \
+          -e POSTGRES_HOST=${{secrets.PG_HOST}} \
+          -e POSTGRES_DB=${{secrets.PG_DB}} \
+          -e POSTGRES_USER=${{secrets.PG_USER}} \
+          -e POSTGRES_PASSWORD=${{secrets.PG_PASSWORD}} \
           -e TZ=Europe/Rome \
           -e PGTZ=Europe/Rome \
           -p 5432:5432 \
@@ -39,12 +39,12 @@ jobs:
           -d postgis/postgis:13-3.1-alpine
           docker run --name pgadmin --network proxy -p 5050:80 -e "PGADMIN_DEFAULT_EMAIL=admin@admin.com" -e "PGADMIN_DEFAULT_PASSWORD=root" -d dpage/pgadmin4
           docker run --name backend-development --network proxy \
-          -e PG_HOST=postgresbase \
-          -e PG_DB=postgres \
-          -e PG_USER=postgres \
-          -e PG_PASSWORD=developmentChatOperativa \
-          -e PG_SCHEMA=base \
-          -e PG_PORT=5432 \
+          -e PG_HOST=${{secrets.PG_HOST}}  \
+          -e PG_DB=${{secrets.PG_DB}}  \
+          -e PG_USER=${{secrets.PG_USER}}  \
+          -e PG_PASSWORD=${{secrets.PG_PASSWORD}}  \
+          -e PG_SCHEMA=${{secrets.PG_SCHEMA}}  \
+          -e PG_PORT=${{secrets.PG_PORT}}  \
           -e TZ=Europe/Rome \
           -e PGTZ=Europe/Rome \
           -p 7000:7000 \
