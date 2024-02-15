@@ -16,10 +16,11 @@ let _ = {
   DB_USER: process.env.PG_USER,
   DB_PASSWORD: process.env.PG_PASSWORD,
 };
+console.log(process.env.NODE_ENV);
 
 if(process.env.NODE_ENV === 'production'){
   _ = {
-    DB_HOST: "wwwww",
+    DB_HOST: '${{secrets.SSH_HOST_PROD}}',
     DB_PORT: process.env.PG_PORT,
     DB_DB: process.env.PG_DB,
     DB_SCHEMA: process.env.PG_SCHEMA,
