@@ -8,11 +8,13 @@ import { ListItem } from '../entities/list-item.entity';
 import { Users } from '../entities/users.entity';
 import { UsersService } from './users/users.service';
 import { UsersController } from './users/users.controller';
+import { TestModule } from './test/test.module';
 
 @Global()
 @Module({
   imports: [
     TypeOrmModule.forFeature([ListItem, Users]),
+    TestModule,
   ],
   controllers: [ListItemController, UsersController],
   providers: [ListItemService, UsersService]
