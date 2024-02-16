@@ -16,8 +16,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.SSH_HOST_PROD}} '
           docker stop backend-development
           docker rm $(docker ps -a -q)
-          docker system prune
-          docker system prune -a
+          docker system prune -af
           '
   Build_image_app_and_publish:
     needs: Stop_and_remove_container
