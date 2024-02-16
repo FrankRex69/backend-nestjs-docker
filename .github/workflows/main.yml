@@ -14,8 +14,10 @@ jobs:
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.SSH_HOST_PROD}} '
-          # docker stop backend-development
-          # docker rm backend-development
+          docker stop backend-development
+          docker rm $(docker ps -a -q)
+          docker system prune
+          docker system prune -a
           '
   Build_image_app_and_publish:
     needs: Stop_and_remove_container
