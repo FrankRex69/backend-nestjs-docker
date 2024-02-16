@@ -14,7 +14,7 @@ const common_1 = require("@nestjs/common");
 const public_decorator_1 = require("../auth/decorators/public.decorator");
 let TestController = class TestController {
     get() {
-        return 'test ok!';
+        return 'test ok!?';
     }
 };
 __decorate([
