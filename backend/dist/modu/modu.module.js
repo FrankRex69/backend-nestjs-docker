@@ -15,6 +15,7 @@ const list_item_entity_1 = require("../entities/list-item.entity");
 const users_entity_1 = require("../entities/users.entity");
 const users_service_1 = require("./users/users.service");
 const users_controller_1 = require("./users/users.controller");
+const test_module_1 = require("./test/test.module");
 let ModuModule = class ModuModule {
 };
 ModuModule = __decorate([
@@ -22,6 +23,7 @@ ModuModule = __decorate([
     common_1.Module({
         imports: [
             typeorm_1.TypeOrmModule.forFeature([list_item_entity_1.ListItem, users_entity_1.Users]),
+            test_module_1.TestModule,
         ],
         controllers: [list_item_controller_1.ListItemController, users_controller_1.UsersController],
         providers: [list_item_service_1.ListItemService, users_service_1.UsersService]
