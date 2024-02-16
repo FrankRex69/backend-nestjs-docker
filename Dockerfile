@@ -16,7 +16,7 @@ RUN npm install
 COPY . /app
 
 # Command
-ENTRYPOINT NODE_ENV=production npm run start:dev-local
+ENTRYPOINT npm run start:dev-local
 
 # ------------------------------------------------------------------
 # ------------------------------------------------------------------

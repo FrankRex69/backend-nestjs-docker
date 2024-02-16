@@ -7,7 +7,7 @@ export class TestController {
     @Public()
     @Get()
     get(): String {       
-    return 'test ok!? 1 2 3 4 A B';
+    return 'test ok!? 1 2 3 4 A B C';
     }
 
 }
