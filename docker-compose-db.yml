@@ -8,16 +8,15 @@ services:
     networks:
       - proxy
     environment:
-      - POSTGRES_HOST="postgresbase"
-      - POSTGRES_DB="postgres"
-      - POSTGRES_USER="postgres"
-      - POSTGRES_PASSWORD="developmentChatOperativa"
+      - POSTGRES_HOST="${PG_HOST}"
+      - POSTGRES_DB="${DB}"
+      - POSTGRES_USER="${USER}"
+      - POSTGRES_PASSWORD="${PG_PASSWORD}"
       - TZ=Europe/Rome
       - PGTZ=Europe/Rome
     ports:
-      - '5432:5432'
+      - '"${PG_PORT}":"${PG_PORT}"'
     volumes:
-      -volumeName:containerPath:ro
       - ./docker_volumes/postgresql_data:/var/lib/postgresql/data
       - ./init_docker/init.sql:/docker-entrypoint-initdb.d/init.sql
 

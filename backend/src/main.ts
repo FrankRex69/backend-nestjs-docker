@@ -42,7 +42,7 @@ async function bootstrap() {
     
   const port = 7000;
   app.listen(port, function () {
-    console.log("qwerty. 1 2 3 4 5 6 7");       
+    console.log("qwerty. 1 2 3 4 5 6 7 8");       
     console.log(`http://localhost:${port}/api/swagger`);
   });
 
