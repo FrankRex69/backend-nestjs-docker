@@ -8,14 +8,14 @@ services:
     networks:
       - proxy
     environment:
-      - POSTGRES_HOST="postgresbase"
-      - POSTGRES_DB="postgres"
-      - POSTGRES_USER="postgres"
-      - POSTGRES_PASSWORD="developmentChatOperativa"
+      - POSTGRES_HOST="${PG_HOST}"
+      - POSTGRES_DB="${PG_DB}"
+      - POSTGRES_USER="${PG_USER}"
+      - POSTGRES_PASSWORD="${PG_PASSWORD}"
       - TZ=Europe/Rome
       - PGTZ=Europe/Rome
     ports:
-      - '5432:5432'
+      - '${PG_PORT}:${PG_PORT}'
     volumes:
       - ./docker_volumes/postgresql_data:/var/lib/postgresql/data
       - ./init_docker/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -33,7 +33,7 @@ services:
       target: '${TARGET}'
     # entrypoint: bash -c '${COMMAND}'
     ports:
-      - '7000:7000'
+      - '${APP_PORT}:${APP_PORT}'
     depends_on:
       - postgresbase
     # One of the main advantages of using Docker volumes
@@ -50,10 +50,10 @@ services:
     networks:
       - proxy
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL}"
+      PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD}"
     ports:
-      - '5050:80'
+      - '${PGADMIN_PORT_HOST}:${PGADMIN_PORT_DOCKER}'
     depends_on:
       - postgresbase
 
