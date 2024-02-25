@@ -21,7 +21,7 @@ services:
     # is the possibility of changing the content/configuration
     # of a container without the need to recreate it.
     # volumes:
-    #  - ./backend/src:/app/backend/src  
+    #  - ./backend/src:/app/backend/src
 
 networks:
   proxy:
