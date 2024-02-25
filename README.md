@@ -16,7 +16,7 @@ $ npm install
 $ docker stop $(docker ps -a -q)
 $ docker rm $(docker ps -a -q)
 
-# DOCKER DEPLOY(in root)
+# DOCKER DEPLOY (in root)
 $ docker network create proxy (docker network ls, docker network prune)
 ## Docker for developer mode in local
 $ IMAGE=backend-development-local:backend-development-local TARGET=local docker compose -f docker-compose-dev-local.yml --env-file ./backend/.env up

@@ -1,4 +1,4 @@
-# Use the Node.js image for the local
+# Use the Node.js image for the development local
 FROM node:20 AS local
 
 # Set the working directory. If it doesn't exists, it'll be created
@@ -22,7 +22,7 @@ ENTRYPOINT npm run start:dev-local
 # ------------------------------------------------------------------
 # ------------------------------------------------------------------
 
-# Use the Node.js image for the local
+# Use the Node.js image for the development server
 FROM node:20 AS development
 
 # Set the working directory. If it doesn't exists, it'll be created
